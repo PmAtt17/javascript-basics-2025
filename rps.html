@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ROCK PAPER SCISSORS</title>
+
+		<link rel="stylesheet" href="css/style.css" />
+		<style>
+			body{
+				background-color: papayawhip;
+				color: cadetblue;
+				font-family: sans-serif
+			};
+			button{
+				color: blueviolet;
+				padding: 3px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>ROCK PAPER SCISSORS</h1>
+<div class="button-holder">
+		<button onclick="pickWeapon(ROCK)">Rock</button>
+		<button onclick="pickWeapon(PAPER)">Paper</button>
+		<button onclick="pickWeapon(SCISSORS)">Scissors</button>
+</div>
+		<div id="aftermath" >Battle Results</div>
+		<div>Wins and Losses</div>
+		<div id="winCounter" >Win Count</div>
+		<div id="lossCounter">Loss Count</div>
+		<div id="tieCounter">Tie Count</div>
+		<script src="scripts/rps/app.js"></script>
+	</body>
+</html>
