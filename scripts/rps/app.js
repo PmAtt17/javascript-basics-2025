@@ -3,7 +3,7 @@
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
-
+const PLUSONEWIN = ;
 /** @type { HTMLElement } */
 //@ts-ignore
 let aftermathElement = document.getElementById("aftermath");
@@ -13,7 +13,6 @@ let tieCountElement = document.getElementById("tieCounter");
 let tieCount = 0;
 let winCount = 0;
 let lossCount = 0;
-
 
 const selectComWeapon = function () {
 	const rand = Math.floor(Math.random() * 3);
@@ -26,6 +25,12 @@ const selectComWeapon = function () {
 	}
 	return SCISSORS;
 };
+
+const buyPerk = function (perk){
+		if(winCount >= 5){
+			winCount -- 5;
+		};
+	};
 
 function decideResults(player, com) {
 	let results = {
@@ -72,6 +77,7 @@ function decideResults(player, com) {
 		results.description = "Scissors is crushed by Scissors";
 		return results;
 	}
+	
 }
 const pickWeapon = function (weapon) {
 	let afterText = `Player picked ${weapon}.`;
@@ -98,7 +104,7 @@ const pickWeapon = function (weapon) {
 	}
 
 	afterText += `${winner} Because ${results?.description}`;
-
+	//@ts-ignore
 	aftermathElement.textContent = afterText;
 	//@ts-ignore
 	winCountElement.textContent = winCount;

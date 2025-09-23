@@ -18,22 +18,24 @@
 			button{
 				color: blueviolet;
 				padding: 3px;
+				
 			}
 		</style>
 	</head>
 
 	<body>
-		<h1>ROCK PAPER SCISSORS</h1>
-<div class="button-holder">
+		<div class="button-holder">
 		<button onclick="pickWeapon(ROCK)">Rock</button>
 		<button onclick="pickWeapon(PAPER)">Paper</button>
 		<button onclick="pickWeapon(SCISSORS)">Scissors</button>
-</div>
+		<button onclick="buyPerk(PLUSONEWIN)"></button>
+		</div>
+
 		<div id="aftermath" >Battle Results</div>
 		<div>Wins and Losses</div>
-		<div id="winCounter" >Win Count</div>
-		<div id="lossCounter">Loss Count</div>
-		<div id="tieCounter">Tie Count</div>
+		<h4>Win Count:<div id="winCounter" ></div></h4>
+	<h4>Loss Count:<div id="lossCounter"></div></h4>
+		<h4>Tie Count:<div id="tieCounter"></div></h4>
 		<script src="scripts/rps/app.js"></script>
 	</body>
 </html>
