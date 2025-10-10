@@ -28,7 +28,7 @@ const selectComWeapon = function () {
 
 const buyPerk = function (perk){
 		if(winCount >= 5){
-			winCount -- 5;
+			// winCount -- 5;
 		};
 	};
 

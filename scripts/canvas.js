@@ -18,13 +18,14 @@ const CTX = CANVAS.getContext("2d");
 
 CANVAS.height = window.innerHeight;
 CANVAS.width = window.innerWidth;
-
+let BounceElement = document.getElementById("bounceCounter");
+let Bounce = 0;
 class Box {
 	constructor(x, y, color) {
 		this.x = x;
 		this.y = y;
 		this.color = color;
-
+		this.bounce = Bounce;
 		this.speed = 50;
 		this.width = 50;
 		this.height = this.width;
@@ -36,7 +37,7 @@ class Box {
 	}
 
 	draw() {
-CTX.globalAlpha = this.alpha;
+		CTX.globalAlpha = this.alpha;
 		CTX.fillStyle = this.color;
 		CTX.fillRect(this.x, this.y, this.width, this.height);
 	}
@@ -51,41 +52,46 @@ CTX.globalAlpha = this.alpha;
 			// colliding with top
 			this.yDirection = 1;
 			this.y = 0;
+			++this.bounce;
 		} else if (bottom > CANVAS.height) {
 			// colliding with bottom
 			this.yDirection = -1;
 			this.y = CANVAS.height - this.height;
+			++this.bounce;
 		}
 
 		if (left < 0) {
 			// colliding with left
 			this.xDirection = 1;
+			++this.bounce;
 		} else if (right > CANVAS.width) {
 			// colliding with right
 			this.xDirection = -1;
+			++this.bounce;
 		}
 
 		this.x += this.xDirection * this.speed;
 		this.y += this.yDirection * this.speed;
 	}
 }
-let rgb1 = Math.floor(Math.random() * 255);
-let rgb2 =  Math.floor(Math.random() * 255);
-let rgb3 =  Math.floor(Math.random() * 255);
+let Rgb1 = Math.floor(Math.random() * 255);
+let Rgb2 = Math.floor(Math.random() * 255);
+let Rgb3 = Math.floor(Math.random() * 255);
 
 /** @type { Box[] } */
 let boxes = [];
 
- let colors = [
- 	  "red",
-	  "orange",
- 	  "purple",
- 	  "pink",
-// "173",
-	  "rgb(30, 30, 255)"
+let colors = [
+	"red",
+	"orange",
+	"purple",
+	"pink",
+	// "white",
+	//"rgb(30, 30, 255)",
+	"rgb(Rgb1, Rgb2, Rgb3)",
 ];
 
-for (let i = 0; i <= 10000; i++) {
+for (let i = 0; i <= 1000; i++) {
 	let color = colors[Math.floor(Math.random() * colors.length)];
 	let box = new Box(CANVAS.width / 2, CANVAS.height / 2, color);
 	box.width = 20;
@@ -102,7 +108,7 @@ let currentTimestamp = 0;
  * @param { number} timestamp
  */
 function drawLoop(timestamp) {
-	CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
+	//CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
 
 	boxes.forEach((b) => {
 		b.draw();
@@ -115,10 +121,10 @@ function drawLoop(timestamp) {
 
 requestAnimationFrame(drawLoop);
 
-
 function onResize() {
 	CANVAS.height = window.innerHeight;
 	CANVAS.width = window.innerWidth;
 }
 
 window.addEventListener("resize", onResize);
+// I tried to add a bounce counter
